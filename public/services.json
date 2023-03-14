@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Rich Dad",
+        "img": "https://i.ibb.co/0XgBfB0/image1.jpg",
+        "Author": " Robert Kiyosaki",
+        "description": "Robert Kiyosaki (Rich Dad Poor Dad) offers personal finance education to help you learn about cash flow, real estate, investing, and business building.",
+        "price": "200",
+        "quantity": "1",
+        "supplierName": "Rofiq"
+    },
+    {
+        "name": "Atomic Habits",
+        "img": "https://i.ibb.co/KXxZmsJ/image2.png",
+        "Author": " Robert Kiyosaki",
+        "description": "Packed with evidence-based strategies, Atomic Habits will teach you how to make small changes that will transform your habits and deliver amazing results.",
+        "price": "250",
+        "quantity": "1",
+        "supplierName": "Sofiq"
+    },
+    {
+        "name": "The 7 Habits of Highly Effective People",
+        "img": "https://i.ibb.co/QrtXwDV/image3.jpg",
+        "Author": " Stephen Covey",
+        "description": "The 7 Habits of Highly Effective People explores the principles of effective self-leadership, influence, collaboration, and improvement.",
+        "price": "300",
+        "quantity": "1",
+        "supplierName": "Salam"
+    },
+    {
+        "name": "Miracle Morning",
+        "img": "https://i.ibb.co/6RVywp3/image6.jpg",
+        "Author": " Hal Elrod",
+        "description": "The Miracle Morning(tm) is literally the ONE thing that will make immediate and profound changes in any-or every area of your life.",
+        "price": "350",
+        "quantity": "1",
+        "supplierName": "Borkot"
+    },
+    {
+        "name": "The Power of Positive Thinking",
+        "img": "https://i.ibb.co/ZHLGWTX/image5.png",
+        "Author": " Norman Vincent Peale",
+        "description": "Dr Peale's The Power of Positive Thinking is a very analytical yet mostly religious approach to conditioning a one's mind toward successful living.",
+        "price": "400",
+        "quantity": "1",
+        "supplierName": "Abdul Zobbar"
+    },
+    {
+        "name": "The Alchemist",
+        "img": "https://i.ibb.co/5Gq9hCz/the-alchemist.jpg",
+        "Author": " Paulo Coelho",
+        "description": "Paulo Coelho's masterpiece tells the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure.",
+        "price": "450",
+        "quantity": "1",
+        "supplierName": "Abdul Kader"
+    },
+    {
+        "name": "Think and Grow Rich",
+        "img": "https://i.ibb.co/hRRhgb1/think-grow-rich.jpg",
+        "Author": " Napoleon Hill",
+        "description": "Think and Grow Rich is the all-time bestseller in its field, having sold 15 million copies worldwide, and sets the standard for today's motivational thinking.",
+        "price": "20",
+        "quantity": "1",
+        "supplierName": "Abdul Kader"
+    },
+    {
+        "name": "The 5 Second Rule",
+        "img": "https://i.ibb.co/KKvfYRs/5Second.png",
+        "Author": "Mel Robbins",
+        "description": "The 5 Second Rule is the secret to changing anything about your life. You can use the Rule and its countdown method to break any bad habit,",
+        "price": "450",
+        "quantity": "1",
+        "supplierName": "Abdul Kader"
+    },
+    {
+        "name": "Mindset",
+        "img": "https://i.ibb.co/0X1rmWd/mindset.jpg",
+        "Author": "Carol Dweck",
+        "description": "Dweck, Ph.D., discovered a simple but groundbreaking idea: the power of mindset. In this brilliant book, she shows how success in school, work, sports",
+        "price": "250",
+        "quantity": "1",
+        "supplierName": "Abdul Kader"
+    },
+    {
+        "name": "The Art of War",
+        "img": "https://i.ibb.co/MS1sCJp/The-Art-of-War-by-Sun-Tzu.jpg",
+        "Author": "Sun Tzu",
+        "description": "The Art of War is an ancient Chinese military treatise dating from the Late Spring and Autumn Period (roughly 5th century BC). The work, which is attributed",
+        "price": "200",
+        "quantity": "1",
+        "supplierName": "Abdul Kader"
+    }
+]
