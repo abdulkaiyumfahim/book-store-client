@@ -10,7 +10,7 @@ const Update = () => {
   const [products, setProducts] = useProducts();
   console.log(product)
   useEffect(() => {
-    fetch(`http://localhost:5000/inventories/${id}`)
+    fetch(`https://book-store-server-nine.vercel.app/inventories/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -18,7 +18,7 @@ const Update = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm('Are you sure you want to cancel this inventory');
     if(proceed){
-        fetch(`http://localhost:5000/inventories/${id}`, {
+        fetch(`https://book-store-server-nine.vercel.app/inventories/${id}`, {
             method: 'DELETE',
         })
         .then((res) => res.json())
@@ -53,7 +53,7 @@ const Update = () => {
       imageUrl,
       bio,
     };
-    fetch(`http://localhost:5000/inventories`, {
+    fetch(`https://book-store-server-nine.vercel.app/inventories`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -8,7 +8,7 @@ const MyItems = () => {
   //   console.log(order);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myItems?email=${user?.email}`)
+    fetch(`https://book-store-server-nine.vercel.app/myItems?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrderPlace(data));
   }, [user?.email]);
@@ -20,7 +20,7 @@ const MyItems = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm('Are you sure you want to cancel this inventory');
     if(proceed){
-        fetch(`http://localhost:5000/inventories/${id}`, {
+        fetch(`https://book-store-server-nine.vercel.app/inventories/${id}`, {
             method: 'DELETE',
         })
         .then((res) => res.json())

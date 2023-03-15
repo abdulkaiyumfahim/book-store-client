@@ -7,7 +7,7 @@ const MyItem = ({ order, handleDelete }) => {
 
   const [orderPlace, setOrderPlace] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/inventories/${inventoryId}`)
+    fetch(`https://book-store-server-nine.vercel.app/inventories/${inventoryId}`)
       .then((res) => res.json())
       .then((data) => setOrderPlace(data));
   }, [inventoryId]);

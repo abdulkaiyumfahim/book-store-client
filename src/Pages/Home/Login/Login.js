@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loading from "../../../Shared/Loading";
 
 const Login = () => {
-  const { signIn, loading} = useContext(AuthContext);
+  const { signIn, loading } = useContext(AuthContext);
   const [userEmail, setUserEmail] = useState("");
   // const [error, setError] = useState("");
   let navigate = useNavigate();
@@ -17,6 +17,9 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
   // setError(errorMessage)
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -26,9 +29,23 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        // navigate('/');
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
+        fetch("https://book-store-server-nine.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         navigate(from, { replace: true });
+        // navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -43,9 +60,6 @@ const Login = () => {
     setUserEmail(email);
   };
 
-  if(loading){
-    return <Loading></Loading>
-  }
   const handlePasswordReset = () => {
     sendPasswordResetEmail(auth, userEmail)
       .then(() => {
