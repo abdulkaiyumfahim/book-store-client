@@ -15,6 +15,8 @@ import Update from "./Pages/Home/Inventories/Update";
 import MyItems from "./Pages/Home/MyItems/MyItems";
 import PrivateRoute from "./Pages/Home/PrivateRoute/PrivateRoute";
 import ManageInventories from "./Pages/Home/ManageInventories/ManageInventories";
+import Blogs from "./Pages/Home/Blogs/Blogs";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +54,10 @@ function App() {
           element: <ManageInventories></ManageInventories>,
         },
         {
+          path: "/blogs",
+          element: <Blogs></Blogs>,
+        },
+        {
           path: "/socialLogin",
           element: <SocialLogin></SocialLogin>,
         },
@@ -70,6 +76,10 @@ function App() {
         {
           path: "/history",
           element: <History></History>,
+        },
+        {
+          path: "*",
+          element: <NotFound></NotFound>,
         },
       ],
     },
