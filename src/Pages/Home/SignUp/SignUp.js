@@ -3,10 +3,17 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from "../../../Shared/Loading";
 
 const SignUp = () => {
   const auth = getAuth();
-  const { user, createUser } = useContext(AuthContext);
+  const { user, createUser, loading } = useContext(AuthContext);
+
+  if(loading){
+    return <Loading></Loading>
+  }
   const handleCreateUser = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -23,15 +30,17 @@ const SignUp = () => {
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        toast(errorMessage);
         // ..
       });
   };
 
+
+
   const verifyEmail = () =>{
     sendEmailVerification(auth.currentUser)
   .then(() => {
-    alert('Please check your email & verify your email address')
+    toast('Please check your email & verify your email address')
     // Email verification sent!
     // ...
 
@@ -96,6 +105,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </form>
   );
 };

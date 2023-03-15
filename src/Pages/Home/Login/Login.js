@@ -3,18 +3,19 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../../Shared/Loading";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
-  const [userEmail, setUserEmail] = useState('')
-  const [error, setError] = useState('')
+  const { signIn, loading} = useContext(AuthContext);
+  const [userEmail, setUserEmail] = useState("");
+  // const [error, setError] = useState("");
   let navigate = useNavigate();
   let location = useLocation();
   const auth = getAuth();
 
-
   let from = location.state?.from?.pathname || "/";
-
 
   // setError(errorMessage)
   const handleSignIn = (event) => {
@@ -28,39 +29,39 @@ const Login = () => {
         console.log(user);
         // navigate('/');
         navigate(from, { replace: true });
-      
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        setError(errorMessage)
+        toast(errorMessage);
         console.log(errorCode, errorMessage);
       });
   };
 
-  const handleEmailBlur = (event) =>{
+  const handleEmailBlur = (event) => {
     const email = event.target.value;
-    setUserEmail(email)
+    setUserEmail(email);
+  };
 
+  if(loading){
+    return <Loading></Loading>
   }
-
-  const handlePasswordReset = () =>{
+  const handlePasswordReset = () => {
     sendPasswordResetEmail(auth, userEmail)
-  .then(() => {
-    alert('Password reset email send. Please check your email')
-    // Password reset email sent!
-    // ..
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setError(errorMessage)
-    // ..
-  });
-  }
+      .then(() => {
+        toast("Password reset email send. Please check your email");
+        // Password reset email sent!
+        // ..
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast(errorMessage);
+        // ..
+      });
+  };
   return (
     <form onSubmit={handleSignIn}>
-      {error}
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
@@ -78,7 +79,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                onBlur={handleEmailBlur}
+                  onBlur={handleEmailBlur}
                   type="text"
                   name="email"
                   placeholder="email"
@@ -99,10 +100,20 @@ const Login = () => {
                   {/* <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a> */}
-                   <p>Forgot password? Please <Link className="btn" onClick={handlePasswordReset}>Reset</Link></p>
+                  <p>
+                    Forgot password? Please{" "}
+                    <Link className="btn" onClick={handlePasswordReset}>
+                      Reset
+                    </Link>
+                  </p>
                 </label>
               </div>
-              <p>New to this Website? Please <Link className="btn" to="/signup">SignUp</Link></p>
+              <p>
+                New to this Website? Please{" "}
+                <Link className="btn" to="/signup">
+                  SignUp
+                </Link>
+              </p>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -110,11 +121,15 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-              <div className="text-center"> <SocialLogin></SocialLogin></div>
+              <div className="text-center">
+                {" "}
+                <SocialLogin></SocialLogin>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </form>
   );
 };
