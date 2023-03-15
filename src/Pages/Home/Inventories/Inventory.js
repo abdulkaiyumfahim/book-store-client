@@ -6,9 +6,9 @@ const Inventory = ({ product }) => {
     product;
   return (
     <div className="grid place-content-center	py-2">
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 h-50  bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
-          <img src={img} alt="Shoes" className="rounded-xl w-3/4" />
+          <img src={img} alt="Shoes" className="rounded-xl w-50" />
         </figure>
         <div className="card-body items-center text-center">
           <h1 className="card-title">{name}</h1>

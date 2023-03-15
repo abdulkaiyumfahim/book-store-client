@@ -1,15 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState('')
   let navigate = useNavigate();
   let location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
 
+
+  // setError(errorMessage)
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -26,11 +29,13 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setError(errorMessage)
         console.log(errorCode, errorMessage);
       });
   };
   return (
     <form onSubmit={handleSignIn}>
+      {error}
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">

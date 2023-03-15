@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ManageInventory = ({ product }) => {
   const { _id, name, img, Author, description, price, quantity, supplierName } =
@@ -17,6 +18,11 @@ const ManageInventory = ({ product }) => {
             <h2 className="card-title">{supplierName}</h2>
             <p>$ {price}</p>
             <p> {quantity}</p>
+            <div className="card-actions">
+              <Link to={`/inventory/${_id}`}>
+                <button className="btn btn-primary">Add Items</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

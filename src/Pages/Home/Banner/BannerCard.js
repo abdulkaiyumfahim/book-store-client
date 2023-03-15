@@ -3,7 +3,7 @@ import React from "react";
 const BannerCard = ({ slide }) => {
   const { id, prev, next, image } = slide;
   return (
-    <div id={`slide${id}`} className="carousel-item relative w-full h-2/6">
+    <div id={`slide${id}`} className="carousel-item relative w-full h-1/6">
       <div className="img-gradient">
         <img alt="" src={image} className="w-50" />
       </div>
