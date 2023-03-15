@@ -12,6 +12,16 @@ const Inventories = () => {
           <Inventory key={product._id} product={product}></Inventory>
         ))}
       </div>
+      <div className="my-5">
+        <>
+          <Link
+            className="flex justify-center space-x-3 text-2xl mb-3 font-medium"
+            to="/manageInventories"
+          >
+            <button className="btn btn-outline">ManageInventories</button>
+          </Link>
+        </>
+      </div>
     </div>
   );
 };

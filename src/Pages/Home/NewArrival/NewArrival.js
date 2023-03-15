@@ -10,16 +10,6 @@ const NewArrival = () => {
         <Link to="/history">History</Link>
         <Link to="/fantacy">Fantacy</Link>
       </div>
-      <div>
-        <>
-          <Link
-            className="flex justify-center space-x-3 text-2xl mb-3 font-medium"
-            to="/manageInventories"
-          >
-            <button className="btn btn-outline">ManageInventories</button>
-          </Link>
-        </>
-      </div>
     </div>
   );
 };

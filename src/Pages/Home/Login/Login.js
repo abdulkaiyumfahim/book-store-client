@@ -1,13 +1,17 @@
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const [userEmail, setUserEmail] = useState('')
   const [error, setError] = useState('')
   let navigate = useNavigate();
   let location = useLocation();
+  const auth = getAuth();
+
 
   let from = location.state?.from?.pathname || "/";
 
@@ -33,6 +37,27 @@ const Login = () => {
         console.log(errorCode, errorMessage);
       });
   };
+
+  const handleEmailBlur = (event) =>{
+    const email = event.target.value;
+    setUserEmail(email)
+
+  }
+
+  const handlePasswordReset = () =>{
+    sendPasswordResetEmail(auth, userEmail)
+  .then(() => {
+    alert('Password reset email send. Please check your email')
+    // Password reset email sent!
+    // ..
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setError(errorMessage)
+    // ..
+  });
+  }
   return (
     <form onSubmit={handleSignIn}>
       {error}
@@ -53,6 +78,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                onBlur={handleEmailBlur}
                   type="text"
                   name="email"
                   placeholder="email"
@@ -70,12 +96,13 @@ const Login = () => {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  {/* <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
-                  </a>
+                  </a> */}
+                   <p>Forgot password? Please <Link className="btn" onClick={handlePasswordReset}>Reset</Link></p>
                 </label>
-                <SocialLogin></SocialLogin>
               </div>
+              <p>New to this Website? Please <Link className="btn" to="/signup">SignUp</Link></p>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -83,6 +110,7 @@ const Login = () => {
                   value="Login"
                 />
               </div>
+              <div className="text-center"> <SocialLogin></SocialLogin></div>
             </div>
           </div>
         </div>

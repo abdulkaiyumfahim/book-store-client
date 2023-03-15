@@ -1,8 +1,11 @@
+import { getAuth, sendEmailVerification } from "firebase/auth";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+  const auth = getAuth();
   const { user, createUser } = useContext(AuthContext);
   const handleCreateUser = (event) => {
     event.preventDefault();
@@ -14,6 +17,8 @@ const SignUp = () => {
     .then((user) =>{
         const result = user.user;
         console.log(result);
+        form.reset()
+        verifyEmail()
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -22,6 +27,16 @@ const SignUp = () => {
         // ..
       });
   };
+
+  const verifyEmail = () =>{
+    sendEmailVerification(auth.currentUser)
+  .then(() => {
+    alert('Please check your email & verify your email address')
+    // Email verification sent!
+    // ...
+
+  });
+  }
   return (
     <form onSubmit={handleCreateUser} className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
@@ -72,11 +87,12 @@ const SignUp = () => {
                   Forgot password?
                 </a>
               </label>
-              <SocialLogin></SocialLogin>
             </div>
+            <p>Already Register? Please <Link className="btn" to="/login">Login</Link></p>
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="SignUp" />
             </div>
+           <div className="text-center"> <SocialLogin></SocialLogin></div>
           </div>
         </div>
       </div>
