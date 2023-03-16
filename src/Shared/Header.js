@@ -62,7 +62,7 @@ const Header = () => {
               ) : (
                 <>
                   <Link to="/login">Login</Link>
-                  <Link to="/signup">SignUp</Link>
+                  
                 </>
               )}
             </li>
@@ -72,7 +72,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+        <Link className="btn" to="/signup">SignUp</Link>
         </div>
       </div>
     </div>
