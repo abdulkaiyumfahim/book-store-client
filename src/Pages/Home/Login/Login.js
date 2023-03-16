@@ -15,7 +15,7 @@ const Login = () => {
   let location = useLocation();
   const auth = getAuth();
 
-  let from = location.state?.from?.pathname || "/";
+  let from = location?.state?.from?.pathname || "/";
 
   if (loading) {
     return <Loading></Loading>;
@@ -42,6 +42,8 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
+            // enable localStorage
+            localStorage.setItem('book-token', data?.token) 
             console.log(data);
           });
         navigate(from, { replace: true });
