@@ -8,11 +8,7 @@ const MyItems = () => {
   //   console.log(order);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myItems?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('book-token')}`
-      },
-    })
+    fetch(`http://localhost:3000/myItems?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrderPlace(data));
   }, [user?.email]);
