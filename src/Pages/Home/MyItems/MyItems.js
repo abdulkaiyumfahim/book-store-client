@@ -8,7 +8,11 @@ const MyItems = () => {
   //   console.log(order);
 
   useEffect(() => {
-    fetch(`https://book-store-server-nine.vercel.app/myItems?email=${user?.email}`)
+    fetch(`http://localhost:3000/myItems?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('book-token')}`
+      },
+    })
       .then((res) => res.json())
       .then((data) => setOrderPlace(data));
   }, [user?.email]);
