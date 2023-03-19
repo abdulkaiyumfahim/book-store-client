@@ -39,9 +39,19 @@ const Header = () => {
               <li>
                 <Link to="/login">Login</Link>
               </li>
+              <li>
+                <Link to="/manageInventories">Manage Items</Link>
+              </li>
+              <li>
+                <Link to="/MyItems">MyItems</Link>
+              </li>
+              <li>
+                <Link to="//inventory/:id">Add Items</Link>
+              </li>
               <li tabIndex={0}>
                 <Link to="/signup">SignUp</Link>
               </li>
+              
             </ul>
           </div>
           <Link to="/" className=" rounded-full">
