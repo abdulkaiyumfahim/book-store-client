@@ -9,7 +9,7 @@ import img6 from "../../../Assets/NewArrivel/All/All6.jpg"
 const AllBooks = () => {
     return (
         <div>
-            <h1>New Arrivals</h1>
+            <h1 >New Arrivals</h1>
            <div className="best-books grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <img src={img1} alt="" />
                 <img src={img2} alt="" />
